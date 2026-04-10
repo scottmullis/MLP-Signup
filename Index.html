@@ -1,0 +1,1155 @@
+Index.html
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLP St. Louis — Group Sign-Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --shock-blue: #0057A8;
+    --shock-gold: #F5C000;
+    --shock-red: #D62B2B;
+    --dark: #0a0c12;
+    --darker: #060709;
+    --surface: #111520;
+    --surface2: #1a2035;
+    --border: rgba(245,192,0,0.18);
+    --text: #e8eaf2;
+    --muted: #8892a4;
+    --green: #22c55e;
+  }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–darker);
+color: var(–text);
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+position: relative;
+background: var(–dark);
+padding: 0;
+overflow: hidden;
+}
+
+.hero-noise {
+position: absolute; inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+opacity: 0.6;
+pointer-events: none;
+}
+
+.hero-stripe {
+position: absolute; bottom: 0; left: 0; right: 0;
+height: 6px;
+background: linear-gradient(90deg, var(–shock-blue) 0%, var(–shock-gold) 50%, var(–shock-red) 100%);
+}
+
+.hero-grid {
+position: absolute; inset: 0;
+background-image: linear-gradient(rgba(0,87,168,0.06) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,87,168,0.06) 1px, transparent 1px);
+background-size: 40px 40px;
+}
+
+.hero-inner {
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+padding: 64px 24px 56px;
+gap: 16px;
+}
+
+.league-badge {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: rgba(245,192,0,0.12);
+border: 1px solid rgba(245,192,0,0.35);
+border-radius: 2px;
+padding: 5px 14px;
+font-family: ‘Space Mono’, monospace;
+font-size: 11px;
+letter-spacing: 0.12em;
+color: var(–shock-gold);
+text-transform: uppercase;
+animation: fadeDown 0.6s ease both;
+}
+
+.ball-icon { font-size: 14px; }
+
+.hero-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(56px, 12vw, 110px);
+line-height: 0.92;
+letter-spacing: 0.02em;
+animation: fadeDown 0.6s 0.1s ease both;
+}
+
+.hero-title .line1 { color: #fff; display: block; }
+.hero-title .line2 {
+display: block;
+-webkit-text-fill-color: transparent;
+-webkit-text-stroke: 2px var(–shock-gold);
+text-stroke: 2px var(–shock-gold);
+}
+
+.hero-subtitle {
+font-size: 18px;
+font-weight: 300;
+color: var(–muted);
+letter-spacing: 0.01em;
+max-width: 560px;
+animation: fadeDown 0.6s 0.2s ease both;
+}
+
+.hero-subtitle strong { color: var(–text); font-weight: 500; }
+
+/* ── INFO CARDS ── */
+.info-section {
+background: var(–dark);
+padding: 48px 24px;
+border-bottom: 1px solid var(–border);
+}
+
+.container { max-width: 860px; margin: 0 auto; }
+
+.section-label {
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(–shock-gold);
+margin-bottom: 24px;
+padding-bottom: 8px;
+border-bottom: 1px solid var(–border);
+}
+
+.info-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 2px;
+background: var(–border);
+border: 1px solid var(–border);
+overflow: hidden;
+}
+
+.info-card {
+background: var(–surface);
+padding: 24px 20px;
+display: flex;
+flex-direction: column;
+gap: 6px;
+transition: background 0.2s;
+}
+
+.info-card:hover { background: var(–surface2); }
+
+.info-icon { font-size: 22px; }
+
+.info-label {
+font-family: ‘Space Mono’, monospace;
+font-size: 9px;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(–muted);
+margin-top: 2px;
+}
+
+.info-value {
+font-size: 15px;
+font-weight: 600;
+color: var(–text);
+line-height: 1.3;
+}
+
+/* ── ABOUT ── */
+.about-section {
+background: var(–darker);
+padding: 48px 24px;
+border-bottom: 1px solid var(–border);
+}
+
+.about-body {
+color: var(–muted);
+font-size: 15px;
+line-height: 1.8;
+max-width: 700px;
+}
+
+.about-body strong { color: var(–shock-gold); font-weight: 600; }
+
+.highlight-row {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 20px;
+}
+
+.chip {
+background: rgba(0,87,168,0.18);
+border: 1px solid rgba(0,87,168,0.4);
+border-radius: 2px;
+padding: 5px 12px;
+font-size: 12px;
+font-weight: 500;
+color: #7bb8f5;
+letter-spacing: 0.03em;
+}
+
+/* ── SCHEDULE ── */
+.schedule-section {
+background: var(–dark);
+padding: 48px 24px;
+border-bottom: 1px solid var(–border);
+}
+
+.day-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 12px;
+}
+
+.day-card {
+border: 1px solid var(–border);
+background: var(–surface);
+padding: 20px;
+position: relative;
+overflow: hidden;
+transition: border-color 0.2s, background 0.2s;
+}
+
+.day-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: var(–shock-blue);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
+
+.day-card.special::before { background: var(–shock-gold); }
+
+.day-card:hover { border-color: rgba(245,192,0,0.4); background: var(–surface2); }
+.day-card:hover::before { transform: scaleX(1); }
+
+.day-name {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 28px;
+color: #fff;
+letter-spacing: 0.04em;
+}
+
+.day-date {
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+color: var(–shock-gold);
+letter-spacing: 0.1em;
+margin-bottom: 10px;
+}
+
+.day-time {
+font-size: 12px;
+color: var(–muted);
+margin-bottom: 6px;
+}
+
+.day-note {
+font-size: 11px;
+color: var(–shock-gold);
+font-weight: 500;
+margin-top: 4px;
+}
+
+/* ── SIGNUP FORM ── */
+.signup-section {
+background: var(–darker);
+padding: 56px 24px 72px;
+}
+
+.signup-intro {
+color: var(–muted);
+font-size: 14px;
+margin-bottom: 32px;
+max-width: 600px;
+}
+
+.form-card {
+background: var(–surface);
+border: 1px solid var(–border);
+padding: 32px;
+margin-bottom: 12px;
+position: relative;
+animation: fadeUp 0.5s ease both;
+}
+
+.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin-bottom: 24px;
+}
+
+@media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+label {
+display: block;
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 7px;
+}
+
+input[type=“text”], input[type=“email”] {
+width: 100%;
+background: var(–darker);
+border: 1px solid rgba(255,255,255,0.1);
+color: var(–text);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 15px;
+padding: 11px 14px;
+outline: none;
+transition: border-color 0.2s;
+border-radius: 2px;
+}
+
+input[type=“text”]:focus, input[type=“email”]:focus {
+border-color: var(–shock-gold);
+}
+
+.days-section-title {
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 14px;
+padding-bottom: 10px;
+border-bottom: 1px solid var(–border);
+}
+
+.day-selector {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+gap: 10px;
+margin-bottom: 24px;
+}
+
+.day-option {
+position: relative;
+cursor: pointer;
+}
+
+.day-option input[type=“checkbox”] {
+position: absolute;
+opacity: 0;
+pointer-events: none;
+}
+
+.day-box {
+border: 1.5px solid rgba(255,255,255,0.1);
+background: var(–darker);
+padding: 16px 14px;
+cursor: pointer;
+transition: all 0.2s;
+position: relative;
+overflow: hidden;
+border-radius: 2px;
+}
+
+.day-box::after {
+content: ‘✓’;
+position: absolute;
+top: 10px; right: 12px;
+font-size: 16px;
+color: var(–shock-gold);
+opacity: 0;
+transform: scale(0.5);
+transition: all 0.2s;
+}
+
+.day-option input:checked + .day-box {
+border-color: var(–shock-gold);
+background: rgba(245,192,0,0.06);
+}
+
+.day-option input:checked + .day-box::after {
+opacity: 1;
+transform: scale(1);
+}
+
+.day-box .db-day {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 22px;
+color: #fff;
+display: block;
+}
+
+.day-box .db-date {
+font-family: ‘Space Mono’, monospace;
+font-size: 9px;
+color: var(–shock-gold);
+letter-spacing: 0.1em;
+display: block;
+margin-bottom: 6px;
+}
+
+.day-box .db-time {
+font-size: 11px;
+color: var(–muted);
+}
+
+.ticket-row {
+display: flex;
+align-items: center;
+gap: 14px;
+margin-top: 8px;
+padding-top: 8px;
+border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.ticket-row label {
+margin: 0;
+font-size: 9px;
+white-space: nowrap;
+color: var(–muted);
+}
+
+.ticket-spinner {
+display: flex;
+align-items: center;
+gap: 0;
+border: 1px solid rgba(255,255,255,0.1);
+overflow: hidden;
+border-radius: 2px;
+}
+
+.spinner-btn {
+background: var(–surface2);
+border: none;
+color: var(–text);
+width: 30px;
+height: 30px;
+font-size: 18px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background 0.15s;
+font-family: monospace;
+line-height: 1;
+}
+
+.spinner-btn:hover { background: var(–shock-blue); }
+
+.spinner-val {
+background: var(–darker);
+color: var(–text);
+font-family: ‘Space Mono’, monospace;
+font-size: 13px;
+width: 36px;
+text-align: center;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-left: 1px solid rgba(255,255,255,0.08);
+border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.ticket-input-wrap { display: flex; align-items: center; gap: 12px; }
+
+.comments-area { margin-bottom: 24px; }
+
+textarea {
+width: 100%;
+background: var(–darker);
+border: 1px solid rgba(255,255,255,0.1);
+color: var(–text);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 14px;
+padding: 11px 14px;
+outline: none;
+resize: vertical;
+min-height: 80px;
+transition: border-color 0.2s;
+border-radius: 2px;
+}
+
+textarea:focus { border-color: var(–shock-gold); }
+
+.submit-btn {
+background: var(–shock-gold);
+color: #000;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 20px;
+letter-spacing: 0.08em;
+border: none;
+padding: 14px 40px;
+cursor: pointer;
+transition: background 0.2s, transform 0.15s;
+border-radius: 2px;
+}
+
+.submit-btn:hover { background: #ffd740; transform: translateY(-1px); }
+.submit-btn:active { transform: translateY(0); }
+
+/* ── RESPONSES TABLE ── */
+.responses-section {
+background: var(–dark);
+padding: 48px 24px 72px;
+border-top: 1px solid var(–border);
+}
+
+.responses-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 24px;
+flex-wrap: wrap;
+gap: 12px;
+}
+
+.total-badge {
+background: rgba(34,197,94,0.12);
+border: 1px solid rgba(34,197,94,0.3);
+padding: 5px 14px;
+font-family: ‘Space Mono’, monospace;
+font-size: 11px;
+color: var(–green);
+border-radius: 2px;
+}
+
+.clear-btn {
+background: transparent;
+border: 1px solid rgba(214,43,43,0.35);
+color: var(–shock-red);
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+letter-spacing: 0.1em;
+padding: 5px 12px;
+cursor: pointer;
+transition: all 0.2s;
+border-radius: 2px;
+}
+
+.clear-btn:hover { background: rgba(214,43,43,0.12); }
+
+.response-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-left: 3px solid var(–shock-blue);
+padding: 20px 24px;
+margin-bottom: 10px;
+animation: fadeUp 0.3s ease both;
+border-radius: 0 2px 2px 0;
+}
+
+.rc-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+flex-wrap: wrap;
+gap: 8px;
+margin-bottom: 12px;
+}
+
+.rc-name {
+font-weight: 600;
+font-size: 15px;
+color: #fff;
+}
+
+.rc-email {
+font-size: 12px;
+color: var(–muted);
+margin-top: 2px;
+}
+
+.rc-timestamp {
+font-family: ‘Space Mono’, monospace;
+font-size: 9px;
+color: var(–muted);
+letter-spacing: 0.08em;
+}
+
+.rc-days {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+}
+
+.rc-day-tag {
+background: rgba(0,87,168,0.18);
+border: 1px solid rgba(0,87,168,0.4);
+padding: 3px 10px;
+font-size: 11px;
+font-weight: 500;
+color: #7bb8f5;
+border-radius: 2px;
+}
+
+.rc-day-tag .tix {
+color: var(–shock-gold);
+margin-left: 4px;
+font-family: ‘Space Mono’, monospace;
+font-size: 10px;
+}
+
+.rc-comment {
+margin-top: 10px;
+font-size: 13px;
+color: var(–muted);
+font-style: italic;
+border-left: 2px solid var(–border);
+padding-left: 10px;
+}
+
+.empty-state {
+text-align: center;
+padding: 48px 0;
+color: var(–muted);
+font-size: 14px;
+}
+
+.empty-icon { font-size: 40px; margin-bottom: 12px; }
+
+/* ── SUMMARY BAR ── */
+.summary-bar {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+gap: 2px;
+background: var(–border);
+border: 1px solid var(–border);
+margin-bottom: 28px;
+overflow: hidden;
+}
+
+.summary-cell {
+background: var(–surface);
+padding: 16px 18px;
+text-align: center;
+}
+
+.summary-day {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 20px;
+color: #fff;
+letter-spacing: 0.04em;
+}
+
+.summary-num {
+font-family: ‘Space Mono’, monospace;
+font-size: 22px;
+color: var(–shock-gold);
+display: block;
+margin-top: 2px;
+}
+
+.summary-sub {
+font-size: 10px;
+color: var(–muted);
+margin-top: 2px;
+}
+
+/* ── TOAST ── */
+.toast {
+position: fixed;
+bottom: 28px; right: 28px;
+background: var(–green);
+color: #000;
+font-family: ‘Space Mono’, monospace;
+font-size: 11px;
+letter-spacing: 0.1em;
+padding: 12px 20px;
+border-radius: 2px;
+opacity: 0;
+transform: translateY(12px);
+transition: all 0.35s ease;
+pointer-events: none;
+z-index: 999;
+}
+
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+from { opacity: 0; transform: translateY(-16px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(14px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── FOOTER ── */
+.footer {
+background: var(–darker);
+border-top: 1px solid var(–border);
+text-align: center;
+padding: 24px;
+font-size: 12px;
+color: var(–muted);
+}
+
+.footer a { color: var(–shock-gold); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+.error-msg {
+color: var(–shock-red);
+font-size: 12px;
+margin-top: 8px;
+display: none;
+}
+
+.required-star { color: var(–shock-red); margin-left: 2px; }
+</style>
+
+</head>
+<body>
+
+<!-- HERO -->
+
+<div class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="league-badge">
+      <span class="ball-icon">🏏</span>
+      MLP 2026 · Regular Season Event #3
+    </div>
+    <h1 class="hero-title">
+      <span class="line1">PICKLEBALL</span>
+      <span class="line2">ST. LOUIS</span>
+    </h1>
+    <p class="hero-subtitle">
+      <strong>Group Sign-Up</strong> — Pick your day(s) and how many tickets you need. We'll coordinate from there.
+    </p>
+  </div>
+  <div class="hero-stripe"></div>
+</div>
+
+<!-- EVENT INFO -->
+
+<div class="info-section">
+  <div class="container">
+    <div class="section-label">Event Details</div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-icon">📅</div>
+        <div class="info-label">Dates</div>
+        <div class="info-value">June 4–7, 2026<br><small style="color:var(--muted);font-weight:400">Thu–Sun</small></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🏟️</div>
+        <div class="info-label">Venue</div>
+        <div class="info-value">Chaifetz Arena<br><small style="color:var(--muted);font-weight:400">Saint Louis, MO</small></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🏠</div>
+        <div class="info-label">Home Team</div>
+        <div class="info-value">St. Louis Shock<br><small style="color:var(--muted);font-weight:400">2025 MLP Cup Champions</small></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🚪</div>
+        <div class="info-label">Doors Open</div>
+        <div class="info-value">60 min before<br><small style="color:var(--muted);font-weight:400">first match</small></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🎟️</div>
+        <div class="info-label">Tickets</div>
+        <div class="info-value">Ticketmaster<br><small style="color:var(--muted);font-weight:400">Individual + passes</small></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🏆</div>
+        <div class="info-label">Format</div>
+        <div class="info-value">Co-ed Team Play<br><small style="color:var(--muted);font-weight:400">Premier Level</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+
+<div class="about-section">
+  <div class="container">
+    <div class="section-label">About the Event</div>
+    <p class="about-body">
+      Major League Pickleball returns to Chaifetz Arena for the <strong>3rd stop of the 2026 Regular Season</strong>, and our hometown <strong>St. Louis Shock</strong> — fresh off their 2025 MLP Cup title — will defend their home court against a select lineup of MLP's elite Premier Level teams. Expect nonstop co-ed team competition across four courts, with the biggest matches on Championship Court.
+      <br><br>
+      Days 1–3 feature group play, with every team facing every other team in their group. <strong>Day 4 (Sunday)</strong> is the showdown round, where seeds are matched head-to-head and standings points are on the line. Admission includes access to all four match courts, the bar, concessions, DJ, sponsor tents, and more. VIP Lounge upgrades also available.
+    </p>
+    <div class="highlight-row">
+      <span class="chip">🎾 4 Match Courts</span>
+      <span class="chip">🍺 Bar &amp; Concessions</span>
+      <span class="chip">🎵 DJ All Day</span>
+      <span class="chip">🌟 VIP Lounge Option</span>
+      <span class="chip">📸 Photography Allowed</span>
+      <span class="chip">🧳 Clear Bag Policy</span>
+    </div>
+  </div>
+</div>
+
+<!-- SCHEDULE -->
+
+<div class="schedule-section">
+  <div class="container">
+    <div class="section-label">Daily Schedule</div>
+    <div class="day-grid">
+      <div class="day-card">
+        <div class="day-name">Thursday</div>
+        <div class="day-date">JUNE 4, 2026 · SESSION 1</div>
+        <div class="day-time">⏰ Matches start 11:00 AM</div>
+        <div class="day-time">🚪 Doors open 10:00 AM</div>
+        <div class="day-time">📋 Group play begins</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">Friday</div>
+        <div class="day-date">JUNE 5, 2026 · SESSION 2</div>
+        <div class="day-time">⏰ Matches start 11:00 AM</div>
+        <div class="day-time">🚪 Doors open 10:00 AM</div>
+        <div class="day-time">📋 Group play continues</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">Saturday</div>
+        <div class="day-date">JUNE 6, 2026 · SESSION 3</div>
+        <div class="day-time">⏰ Matches start 11:00 AM</div>
+        <div class="day-time">🚪 Doors open 10:00 AM</div>
+        <div class="day-time">📋 Final group play day</div>
+      </div>
+      <div class="day-card special">
+        <div class="day-name">Sunday</div>
+        <div class="day-date">JUNE 7, 2026 · SESSION 4</div>
+        <div class="day-time">⏰ Matches start 10:00 AM</div>
+        <div class="day-time">🚪 Doors open 9:00 AM</div>
+        <div class="day-time">🏆 Head-to-head finals</div>
+        <div class="day-note">★ Standings Points Day</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SIGN-UP FORM -->
+
+<div class="signup-section">
+  <div class="container">
+    <div class="section-label">Group Sign-Up</div>
+    <p class="signup-intro">
+      Select the day(s) you'd like to attend and how many tickets you need. An asterisk (<span class="required-star">*</span>) marks required fields.
+    </p>
+
+```
+<div class="form-card" id="signupForm">
+  <div class="form-row">
+    <div>
+      <label for="fname">First &amp; Last Name <span class="required-star">*</span></label>
+      <input type="text" id="fname" placeholder="Your name">
+    </div>
+    <div>
+      <label for="femail">Email Address <span class="required-star">*</span></label>
+      <input type="email" id="femail" placeholder="you@example.com">
+    </div>
+  </div>
+
+  <div class="days-section-title">Select Days &amp; Ticket Quantity <span class="required-star">*</span></div>
+
+  <div class="day-selector">
+    <!-- Thu -->
+    <label class="day-option">
+      <input type="checkbox" id="day-thu" value="Thursday June 4">
+      <div class="day-box">
+        <span class="db-day">Thursday</span>
+        <span class="db-date">JUNE 4 · SESSION 1</span>
+        <span class="db-time">Matches 11:00 AM</span>
+        <div class="ticket-row">
+          <label>Tickets</label>
+          <div class="ticket-input-wrap">
+            <div class="ticket-spinner">
+              <button type="button" class="spinner-btn" onclick="adjustTickets('thu', -1)">−</button>
+              <div class="spinner-val" id="thu-val">1</div>
+              <button type="button" class="spinner-btn" onclick="adjustTickets('thu', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <!-- Fri -->
+    <label class="day-option">
+      <input type="checkbox" id="day-fri" value="Friday June 5">
+      <div class="day-box">
+        <span class="db-day">Friday</span>
+        <span class="db-date">JUNE 5 · SESSION 2</span>
+        <span class="db-time">Matches 11:00 AM</span>
+        <div class="ticket-row">
+          <label>Tickets</label>
+          <div class="ticket-input-wrap">
+            <div class="ticket-spinner">
+              <button type="button" class="spinner-btn" onclick="adjustTickets('fri', -1)">−</button>
+              <div class="spinner-val" id="fri-val">1</div>
+              <button type="button" class="spinner-btn" onclick="adjustTickets('fri', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <!-- Sat -->
+    <label class="day-option">
+      <input type="checkbox" id="day-sat" value="Saturday June 6">
+      <div class="day-box">
+        <span class="db-day">Saturday</span>
+        <span class="db-date">JUNE 6 · SESSION 3</span>
+        <span class="db-time">Matches 11:00 AM</span>
+        <div class="ticket-row">
+          <label>Tickets</label>
+          <div class="ticket-input-wrap">
+            <div class="ticket-spinner">
+              <button type="button" class="spinner-btn" onclick="adjustTickets('sat', -1)">−</button>
+              <div class="spinner-val" id="sat-val">1</div>
+              <button type="button" class="spinner-btn" onclick="adjustTickets('sat', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </label>
+
+    <!-- Sun -->
+    <label class="day-option">
+      <input type="checkbox" id="day-sun" value="Sunday June 7">
+      <div class="day-box">
+        <span class="db-day">Sunday</span>
+        <span class="db-date">JUNE 7 · SESSION 4</span>
+        <span class="db-time">Matches 10:00 AM</span>
+        <div class="ticket-row">
+          <label>Tickets</label>
+          <div class="ticket-input-wrap">
+            <div class="ticket-spinner">
+              <button type="button" class="spinner-btn" onclick="adjustTickets('sun', -1)">−</button>
+              <div class="spinner-val" id="sun-val">1</div>
+              <button type="button" class="spinner-btn" onclick="adjustTickets('sun', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </label>
+  </div>
+
+  <div class="comments-area">
+    <label for="fcomments">Notes / Comments <span style="color:var(--muted);font-weight:300">(optional)</span></label>
+    <textarea id="fcomments" placeholder="Any questions or notes for the group organizer…"></textarea>
+  </div>
+
+  <div id="form-error" class="error-msg">⚠ Please fill in your name, email, and select at least one day.</div>
+
+  <button class="submit-btn" onclick="submitForm()">SUBMIT MY RSVP →</button>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- RESPONSES -->
+
+<div class="responses-section">
+  <div class="container">
+    <div class="responses-header">
+      <div class="section-label" style="margin:0">Responses</div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <span class="total-badge" id="total-badge">0 RSVPs</span>
+        <button class="clear-btn" onclick="clearAll()">CLEAR ALL</button>
+      </div>
+    </div>
+
+```
+<!-- Summary bar -->
+<div class="summary-bar" id="summaryBar">
+  <div class="summary-cell">
+    <div class="summary-day">THU 6/4</div>
+    <span class="summary-num" id="sum-thu">0</span>
+    <div class="summary-sub">tickets</div>
+  </div>
+  <div class="summary-cell">
+    <div class="summary-day">FRI 6/5</div>
+    <span class="summary-num" id="sum-fri">0</span>
+    <div class="summary-sub">tickets</div>
+  </div>
+  <div class="summary-cell">
+    <div class="summary-day">SAT 6/6</div>
+    <span class="summary-num" id="sum-sat">0</span>
+    <div class="summary-sub">tickets</div>
+  </div>
+  <div class="summary-cell">
+    <div class="summary-day">SUN 6/7</div>
+    <span class="summary-num" id="sum-sun">0</span>
+    <div class="summary-sub">tickets</div>
+  </div>
+</div>
+
+<div id="responses-list">
+  <div class="empty-state">
+    <div class="empty-icon">🏏</div>
+    <div>No RSVPs yet — be the first to sign up!</div>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+  <p>MLP St. Louis 2026 · Chaifetz Arena · Tickets available exclusively on <a href="https://www.ticketmaster.com/major-league-pickleball-tickets/artist/3408364" target="_blank">Ticketmaster</a> · <a href="https://majorleaguepickleball.co/events-2026/mlp-st-louis-2026/" target="_blank">Official Event Page</a></p>
+  <p style="margin-top:6px;font-size:11px">Group sign-up page · Responses stored locally in your browser</p>
+</div>
+
+<div class="toast" id="toast">✓ RSVP Submitted!</div>
+
+<script>
+  const ticketCounts = { thu: 1, fri: 1, sat: 1, sun: 1 };
+
+  function adjustTickets(day, delta) {
+    ticketCounts[day] = Math.max(1, Math.min(20, ticketCounts[day] + delta));
+    document.getElementById(day + '-val').textContent = ticketCounts[day];
+  }
+
+  function submitForm() {
+    const name = document.getElementById('fname').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    const comment = document.getElementById('fcomments').value.trim();
+    const errEl = document.getElementById('form-error');
+
+    const days = [];
+    const dayMap = {
+      thu: 'Thursday June 4',
+      fri: 'Friday June 5',
+      sat: 'Saturday June 6',
+      sun: 'Sunday June 7'
+    };
+
+    Object.entries(dayMap).forEach(([key, label]) => {
+      if (document.getElementById('day-' + key).checked) {
+        days.push({ day: label, key, tickets: ticketCounts[key] });
+      }
+    });
+
+    if (!name || !email || days.length === 0) {
+      errEl.style.display = 'block';
+      return;
+    }
+
+    errEl.style.display = 'none';
+
+    const entry = {
+      name, email, days, comment,
+      time: new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })
+    };
+
+    const stored = JSON.parse(localStorage.getItem('mlp_rsvps') || '[]');
+    stored.push(entry);
+    localStorage.setItem('mlp_rsvps', JSON.stringify(stored));
+
+    // Reset
+    document.getElementById('fname').value = '';
+    document.getElementById('femail').value = '';
+    document.getElementById('fcomments').value = '';
+    ['thu','fri','sat','sun'].forEach(k => {
+      document.getElementById('day-' + k).checked = false;
+      ticketCounts[k] = 1;
+      document.getElementById(k + '-val').textContent = 1;
+    });
+
+    renderResponses();
+    showToast();
+  }
+
+  function renderResponses() {
+    const stored = JSON.parse(localStorage.getItem('mlp_rsvps') || '[]');
+    const list = document.getElementById('responses-list');
+    const badge = document.getElementById('total-badge');
+
+    badge.textContent = stored.length + ' RSVP' + (stored.length !== 1 ? 's' : '');
+
+    // Tally summaries
+    const sums = { thu: 0, fri: 0, sat: 0, sun: 0 };
+    const keyMap = {
+      'Thursday June 4': 'thu',
+      'Friday June 5': 'fri',
+      'Saturday June 6': 'sat',
+      'Sunday June 7': 'sun'
+    };
+
+    stored.forEach(r => {
+      r.days.forEach(d => {
+        const k = keyMap[d.day];
+        if (k) sums[k] += d.tickets;
+      });
+    });
+
+    Object.entries(sums).forEach(([k, v]) => {
+      document.getElementById('sum-' + k).textContent = v;
+    });
+
+    if (stored.length === 0) {
+      list.innerHTML = `<div class="empty-state"><div class="empty-icon">🏏</div><div>No RSVPs yet — be the first to sign up!</div></div>`;
+      return;
+    }
+
+    list.innerHTML = stored.slice().reverse().map(r => `
+      <div class="response-card">
+        <div class="rc-header">
+          <div>
+            <div class="rc-name">${escHtml(r.name)}</div>
+            <div class="rc-email">${escHtml(r.email)}</div>
+          </div>
+          <div class="rc-timestamp">${r.time}</div>
+        </div>
+        <div class="rc-days">
+          ${r.days.map(d => `<span class="rc-day-tag">${d.day}<span class="tix">${d.tickets} tix</span></span>`).join('')}
+        </div>
+        ${r.comment ? `<div class="rc-comment">${escHtml(r.comment)}</div>` : ''}
+      </div>
+    `).join('');
+  }
+
+  function clearAll() {
+    if (confirm('Clear all RSVPs? This cannot be undone.')) {
+      localStorage.removeItem('mlp_rsvps');
+      renderResponses();
+    }
+  }
+
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  function escHtml(str) {
+    const d = document.createElement('div');
+    d.appendChild(document.createTextNode(str));
+    return d.innerHTML;
+  }
+
+  renderResponses();
+</script>
+
+</body>
+</html>
